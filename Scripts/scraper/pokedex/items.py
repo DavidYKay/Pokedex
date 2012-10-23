@@ -15,5 +15,7 @@ class PokemonListing(Item):
   secondary_type = Field()
   small_icon = Field()
   large_icon = Field()
+  species = Field()
+  biography = Field()
   
 ########################################
