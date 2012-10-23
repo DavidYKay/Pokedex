@@ -74,10 +74,10 @@ class PokemonSpider(CrawlSpider):
     pokemon_table_query = "id('mw-content-text')/table[3]"
     table = hxs.select(pokemon_table_query)[0]
 
-    item['number'] = table.select("tr[1]/td/table/tr/td/table/tr/td/big/big/span/b/a/span/text()").extract()
-    item['name'] = table.select("tr[1]/td/table/tr/td/table/tr/td/big/big/b/text()").extract()
+    item['number'] = table.select("tr[1]/td/table/tr/td/table/tr/td/big/big/span/b/a/span/text()").extract()[0]
+    item['name'] = table.select("tr[1]/td/table/tr/td/table/tr/td/big/big/b/text()").extract()[0]
 
-    item['large_icon'] = table.select("tr[2]/td/table/tr/td/a/img/@src").extract()
+    item['large_icon'] = table.select("tr[2]/td/table/tr/td/a/img/@src").extract()[0]
 
     item['primary_type'] = table.select("tr[3]/td/table/tr/td/table/tr/td/table/tr[1]/td[1]/a/span/b[1]/text()").extract()[0]
     item['secondary_type'] = table.select("tr[3]/td/table/tr/td/table/tr/td/table/tr[1]/td[2]/a/span/b[1]/text()").extract()[0]
