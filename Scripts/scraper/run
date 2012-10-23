@@ -1,0 +1,6 @@
+#!/bin/bash
+#scrapy crawl login -o live.json -t json
+#scrapy crawl conversation -o conversations.json -t json
+#scrapy crawl message -o messages.json -t json
+
+scrapy crawl pokemon -o pokemons.json -t json

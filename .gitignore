@@ -17,3 +17,5 @@ Diagnostics/
 .idea/*
 
 nuance/
+
+*.pyc
