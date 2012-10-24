@@ -19,3 +19,6 @@ Diagnostics/
 nuance/
 
 *.pyc
+
+Pods
+Podfile.lock
