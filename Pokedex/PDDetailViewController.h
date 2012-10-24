@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class Pokemon;
+
 @interface PDDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) Pokemon *pokemon;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *pokemonImage;
+
+- (IBAction)helloWasPressed:(id)sender;
+
 @end

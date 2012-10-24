@@ -137,8 +137,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-//    self.detailViewController.detailItem = object;
+
+    // self.detailViewController.detailItem = object;
+
+    Pokemon *pokemon = [self.monsters objectAtIndex: indexPath.row];
+
 }
 
 @end

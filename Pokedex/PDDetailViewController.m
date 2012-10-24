@@ -6,44 +6,39 @@
 //  Copyright (c) 2012 David Y. Kay. All rights reserved.
 //
 
+#import "FliteTTS.h"
+#import "Pokedex.h"
+
 #import "PDDetailViewController.h"
 
+#import "Pokemon.h"
+
 @interface PDDetailViewController ()
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
-- (void)configureView;
+
+    @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+    - (void)configureView;
+
 @end
 
 @implementation PDDetailViewController
 
-#pragma mark - Managing the detail item
+#pragma mark - Initialization
 
-- (void)setDetailItem:(id)newDetailItem
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+	self.title = NSLocalizedString(@"Detail", @"Detail");
     }
-
-    if (self.masterPopoverController != nil) {
-        [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
+    return self;
 }
 
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
-    }
-}
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 }
 
@@ -58,15 +53,51 @@
     return YES;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.title = NSLocalizedString(@"Detail", @"Detail");
-    }
-    return self;
+#pragma mark - UI Callbacks
+
+- (IBAction)helloWasPressed:(id)sender {
+    [self sayHello];
 }
-							
+
+#pragma mark - Speech Synthesis
+
+- (void)sayHello {
+
+    FliteTTS * fliteEngine = [Pokedex sharedInstance].fliteEngine;
+    [fliteEngine setVoice:@"cmu_us_awb"];                 // Switch to a different voice
+
+    [fliteEngine speakText:@"How are you gentlemen???"];                 // Make it talk
+    //[fliteEngine setPitch:100.0 variance:50.0 speed:1.0]; // Change the voice properties
+    
+    //[fliteEngine stopTalking];                            // stop talking
+}
+
+
+#pragma mark - Managing the detail item
+
+- (void)setPokemon:(id)newPokemon
+{
+    if (_pokemon != newPokemon) {
+	_pokemon = newPokemon;
+
+	// Update the view.
+	[self configureView];
+    }
+
+    if (self.masterPopoverController != nil) {
+	[self.masterPopoverController dismissPopoverAnimated:YES];
+    }
+}
+
+- (void)configureView
+{
+    // Update the user interface for the detail item.
+
+    if (self.pokemon) {
+        self.detailDescriptionLabel.text = self.pokemon.name;
+    }
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
@@ -82,5 +113,7 @@
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
 }
+
+
 
 @end

@@ -1,11 +1,13 @@
 #import <FMDatabase.h>
 
+#import "FliteTTS.h"
 
 #import "Pokedex.h"
 
 @interface Pokedex ()
 
 @property (readwrite, strong, nonatomic) FMDatabase *database;
+@property (readwrite, strong, nonatomic) FliteTTS *fliteEngine;
 
 @end
 
@@ -22,6 +24,8 @@
         FMDatabase *db = [FMDatabase databaseWithPath: databasePath];
 	[db open];
         self.database = db;
+
+	self.fliteEngine = [[FliteTTS alloc] init];
     }
     return self;
 }
