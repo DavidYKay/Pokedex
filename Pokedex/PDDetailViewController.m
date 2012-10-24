@@ -11,7 +11,9 @@
 
 #import "PDDetailViewController.h"
 
+#import "ImageUtilities.h"
 #import "Pokemon.h"
+#import "StringUtilities.h"
 
 @interface PDDetailViewController ()
 
@@ -67,11 +69,18 @@
     [fliteEngine setVoice:@"cmu_us_awb"];                 // Switch to a different voice
 
     [fliteEngine speakText:@"How are you gentlemen???"];                 // Make it talk
+
+    // voices
+    // cmu_us_kal
+    // cmu_us_kal16
+    // cmu_us_awb
+    // cmu_us_rms
+    // cmu_us_slt
+
     //[fliteEngine setPitch:100.0 variance:50.0 speed:1.0]; // Change the voice properties
-    
+
     //[fliteEngine stopTalking];                            // stop talking
 }
-
 
 #pragma mark - Managing the detail item
 
@@ -94,7 +103,14 @@
     // Update the user interface for the detail item.
 
     if (self.pokemon) {
-        self.detailDescriptionLabel.text = self.pokemon.name;
+        self.pokemonImage.image = [ImageUtilities imageForNumber: self.pokemon.number];
+
+        self.numberLabel.text = [StringUtilities numberLabelFromNumber: self.pokemon.number];
+
+        self.nameLabel.text = self.pokemon.name;
+        self.bioLabel.text = self.pokemon.biography;
+        self.primaryTypeLabel.text = self.pokemon.primaryType;
+        self.secondaryTypeLabel.text = self.pokemon.secondaryType;
     }
 }
 

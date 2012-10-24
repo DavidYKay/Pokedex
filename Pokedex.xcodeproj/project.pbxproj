@@ -776,6 +776,8 @@
 		421B16E8163776A000125D8D /* usenglish.c in Sources */ = {isa = PBXBuildFile; fileRef = 421B16871637769F00125D8D /* usenglish.c */; };
 		421B16EA163776C400125D8D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421B16E9163776C400125D8D /* AVFoundation.framework */; };
 		421B16ED1637786900125D8D /* FliteTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B16EC1637786900125D8D /* FliteTTS.m */; };
+		421B16F216377AF500125D8D /* StringUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B16F116377AF500125D8D /* StringUtilities.m */; };
+		421B16F516377BB300125D8D /* ImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B16F416377BB300125D8D /* ImageUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1634,6 +1636,10 @@
 		421B16E9163776C400125D8D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		421B16EB1637786900125D8D /* FliteTTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FliteTTS.h; path = ../../Classes/FliteTTS.h; sourceTree = "<group>"; };
 		421B16EC1637786900125D8D /* FliteTTS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FliteTTS.m; path = ../../Classes/FliteTTS.m; sourceTree = "<group>"; };
+		421B16F016377AF500125D8D /* StringUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtilities.h; sourceTree = "<group>"; };
+		421B16F116377AF500125D8D /* StringUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtilities.m; sourceTree = "<group>"; };
+		421B16F316377BB300125D8D /* ImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtilities.h; sourceTree = "<group>"; };
+		421B16F416377BB300125D8D /* ImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtilities.m; sourceTree = "<group>"; };
 		A01B485CA75140928EC39B31 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -1704,6 +1710,7 @@
 		421B0F4A1634FE3B00125D8D /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				421B16EF16377AE700125D8D /* Utilities */,
 				421B14A21637649000125D8D /* Model */,
 				421B14A01637648C00125D8D /* ViewControllers */,
 				421B0F531634FE3B00125D8D /* PDAppDelegate.h */,
@@ -2706,6 +2713,17 @@
 			path = "iphone-tts/flite-1.4-iphone/voices";
 			sourceTree = "<group>";
 		};
+		421B16EF16377AE700125D8D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				421B16F016377AF500125D8D /* StringUtilities.h */,
+				421B16F116377AF500125D8D /* StringUtilities.m */,
+				421B16F316377BB300125D8D /* ImageUtilities.h */,
+				421B16F416377BB300125D8D /* ImageUtilities.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3584,6 +3602,8 @@
 				421B16E7163776A000125D8D /* us_text.c in Sources */,
 				421B16E8163776A000125D8D /* usenglish.c in Sources */,
 				421B16ED1637786900125D8D /* FliteTTS.m in Sources */,
+				421B16F216377AF500125D8D /* StringUtilities.m in Sources */,
+				421B16F516377BB300125D8D /* ImageUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,8 @@
 #import "Pokemon.h"
 #import "Pokedex.h"
 #import "PDDetailViewController.h"
+#import "StringUtilities.h"
+#import "ImageUtilities.h"
 
 @interface PDMasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -87,16 +89,6 @@
     self.monsters = monsters;
 }
 
-#pragma mark - Utility
-
-- (NSString *)imageNameForNumber:(NSInteger)number {
-    return [NSString stringWithFormat: @"%03d.png", number];
-}
-
-- (NSString *)numberLabelFromNumber:(NSInteger)number {
-    return [NSString stringWithFormat: @"#%03d", number];
-}
-
 #pragma mark - Table View Datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -129,8 +121,8 @@
     Pokemon *pokemon = [self.monsters objectAtIndex: indexPath.row];
 
     cell.textLabel.text = pokemon.name;
-    cell.detailTextLabel.text = [self numberLabelFromNumber: pokemon.number];
-    cell.imageView.image = [UIImage imageNamed: [self imageNameForNumber: pokemon.number]];
+    cell.detailTextLabel.text = [StringUtilities numberLabelFromNumber: pokemon.number];
+    cell.imageView.image = [ImageUtilities imageForNumber: pokemon.number];
 }
 
 #pragma mark - Table View Delegate
@@ -142,6 +134,7 @@
 
     Pokemon *pokemon = [self.monsters objectAtIndex: indexPath.row];
 
+    self.detailViewController.pokemon = pokemon;
 }
 
 @end
