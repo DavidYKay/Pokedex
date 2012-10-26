@@ -20,6 +20,9 @@
 #import "Pokedex.h"
 #import "Pokemon.h"
 #import "StringUtilities.h"
+#import "SoundUtilities.h"
+
+#pragma mark - Private Methods
 
 @interface PDDetailViewController ()
 
@@ -44,7 +47,8 @@
         [_soundEngine activateAudioSessionWithCategory:AVAudioSessionCategoryPlayback];
         [_soundEngine openAudioDevice];
 
-        NSURL *soundEffectUrl = [[NSBundle mainBundle] URLForResource:@"testSound" withExtension:@"wav"];
+        //NSURL *soundEffectUrl = [[NSBundle mainBundle] URLForResource:@"testSound" withExtension:@"wav"];
+        NSURL *soundEffectUrl = [[NSBundle mainBundle] URLForResource:@"Name-001" withExtension:@"caf"];
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)(soundEffectUrl), &_soundEffect);
     }
     return self;
@@ -86,6 +90,10 @@
     [self playMySoundLikeRightNowReally];
 }
 
+- (IBAction)avAudioWasPressed:(id)sender {
+    [self avPlaySound];
+}
+
 - (IBAction)privateApiWasPressed:(id)sender {
     [self privateApiHello];
 }
@@ -95,8 +103,8 @@
 - (void)playPokemonName {
     NSLog(@"playPokemonName");
     NSError *error = nil;
-    //FISound *soundA = [_soundFactory loadSoundNamed: @"Name-001.caf"
-    FISound *soundA = [_soundFactory loadSoundNamed: @"testSound.wav"
+    //FISound *soundA = [_soundFactory loadSoundNamed: @"testSound.wav"
+    FISound *soundA = [_soundFactory loadSoundNamed: @"Name-001.caf"
                                               error: &error];
     if (error) {
         NSLog(@"ERROR! Could not load sound. Reason: %@", error);
@@ -110,6 +118,12 @@
     NSLog(@"playMySoundLikeRightNowReally");
 
     AudioServicesPlaySystemSound(_soundEffect);
+}
+
+- (void)avPlaySound {
+    _avSound = [SoundUtilities getNameSoundForNumber: 2];
+
+    [_avSound play];
 }
 
 #pragma mark - Private Speech Synthesis

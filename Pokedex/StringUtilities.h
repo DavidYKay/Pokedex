@@ -13,5 +13,6 @@
 + (NSString *)imageNameForNumber:(NSInteger)number;
 
 + (NSString *)numberLabelFromNumber:(NSInteger)number;
++ (NSString *)zeroLeadingNumber:(NSInteger)number;
 
 @end

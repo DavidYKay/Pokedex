@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import <AudioToolbox/AudioToolbox.h>
 
@@ -20,6 +21,7 @@
      FIFactory *_soundFactory;
      FISoundEngine *_soundEngine;
 
+     AVAudioPlayer *_avSound;
 }
 
 @property (strong, nonatomic) Pokemon *pokemon;
@@ -36,6 +38,7 @@
 - (IBAction)speakWasPressed:(id)sender;
 - (IBAction)finchWasPressed:(id)sender;
 - (IBAction)privateApiWasPressed:(id)sender;
+- (IBAction)avAudioWasPressed:(id)sender;
 - (IBAction)testSoundWasPressed:(id)sender;
 
 @end

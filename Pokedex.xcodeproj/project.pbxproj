@@ -2084,6 +2084,9 @@
 		42567A74163B3BE80078928B /* Name-648.caf in Resources */ = {isa = PBXBuildFile; fileRef = 42567563163B3BE10078928B /* Name-648.caf */; };
 		42567A75163B3BE80078928B /* Name-649.caf in Resources */ = {isa = PBXBuildFile; fileRef = 42567564163B3BE10078928B /* Name-649.caf */; };
 		42567A77163B3C950078928B /* testSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 42567A76163B3C950078928B /* testSound.wav */; };
+		426A67FA163B427700F52E7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 426A67F9163B427700F52E7B /* Icon.png */; };
+		426A67FD163B429F00F52E7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 426A67FC163B429F00F52E7B /* Icon.png */; };
+		426A6800163B450F00F52E7B /* SoundUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A67FF163B450F00F52E7B /* SoundUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2949,11 +2952,11 @@
 		421B16F316377BB300125D8D /* ImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtilities.h; sourceTree = "<group>"; };
 		421B16F416377BB300125D8D /* ImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtilities.m; sourceTree = "<group>"; };
 		425665BE163A66690078928B /* VoiceServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VoiceServices.framework; path = System/Library/PrivateFrameworks/VoiceServices.framework; sourceTree = SDKROOT; };
-		42567044163B16C70078928B /* libFinch.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libFinch.a; path = "Libraries/Finch/build/Release-iphoneos/libFinch.a"; sourceTree = "<group>"; };
-		42567047163B202B0078928B /* FISoundEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = FISoundEngine.h; path = Finch/Finch/FISoundEngine.h; sourceTree = "<group>"; };
-		42567048163B202B0078928B /* FISound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = FISound.h; path = Finch/Finch/FISound.h; sourceTree = "<group>"; };
-		42567049163B202B0078928B /* FIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = FIFactory.h; path = Finch/Finch/FIFactory.h; sourceTree = "<group>"; };
-		4256704D163B202F0078928B /* FIRevolverSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = FIRevolverSound.h; path = Finch/Finch/FIRevolverSound.h; sourceTree = "<group>"; };
+		42567044163B16C70078928B /* libFinch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFinch.a; path = "Libraries/Finch/build/Release-iphoneos/libFinch.a"; sourceTree = "<group>"; };
+		42567047163B202B0078928B /* FISoundEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISoundEngine.h; path = Finch/Finch/FISoundEngine.h; sourceTree = "<group>"; };
+		42567048163B202B0078928B /* FISound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISound.h; path = Finch/Finch/FISound.h; sourceTree = "<group>"; };
+		42567049163B202B0078928B /* FIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIFactory.h; path = Finch/Finch/FIFactory.h; sourceTree = "<group>"; };
+		4256704D163B202F0078928B /* FIRevolverSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIRevolverSound.h; path = Finch/Finch/FIRevolverSound.h; sourceTree = "<group>"; };
 		4256704F163B20C80078928B /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		42567053163B3BDE0078928B /* Bio-001.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bio-001.caf"; sourceTree = "<group>"; };
 		42567054163B3BDE0078928B /* Bio-002.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bio-002.caf"; sourceTree = "<group>"; };
@@ -4253,6 +4256,10 @@
 		42567563163B3BE10078928B /* Name-648.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Name-648.caf"; sourceTree = "<group>"; };
 		42567564163B3BE10078928B /* Name-649.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Name-649.caf"; sourceTree = "<group>"; };
 		42567A76163B3C950078928B /* testSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = testSound.wav; sourceTree = "<group>"; };
+		426A67F9163B427700F52E7B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		426A67FC163B429F00F52E7B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		426A67FE163B450F00F52E7B /* SoundUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundUtilities.h; sourceTree = "<group>"; };
+		426A67FF163B450F00F52E7B /* SoundUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundUtilities.m; sourceTree = "<group>"; };
 		A01B485CA75140928EC39B31 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -4299,6 +4306,8 @@
 		421B0F331634FE3B00125D8D = {
 			isa = PBXGroup;
 			children = (
+				426A67FC163B429F00F52E7B /* Icon.png */,
+				426A67F7163B427600F52E7B /* Resources */,
 				421B14AA1637768300125D8D /* Libraries */,
 				421B0F8316375E3500125D8D /* Data */,
 				421B0F4A1634FE3B00125D8D /* Pokedex */,
@@ -5353,6 +5362,8 @@
 				421B16F316377BB300125D8D /* ImageUtilities.h */,
 				421B16F416377BB300125D8D /* ImageUtilities.m */,
 				420A454C163A636300E1E581 /* VSSpeechSynthesizer.h */,
+				426A67FE163B450F00F52E7B /* SoundUtilities.h */,
+				426A67FF163B450F00F52E7B /* SoundUtilities.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -6688,6 +6699,23 @@
 				42567564163B3BE10078928B /* Name-649.caf */,
 			);
 			path = names;
+			sourceTree = "<group>";
+		};
+		426A67F7163B427600F52E7B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				426A67F8163B427600F52E7B /* Images */,
+			);
+			name = Resources;
+			path = Pokedex/Resources;
+			sourceTree = "<group>";
+		};
+		426A67F8163B427600F52E7B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				426A67F9163B427700F52E7B /* Icon.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -8719,6 +8747,8 @@
 				42567A74163B3BE80078928B /* Name-648.caf in Resources */,
 				42567A75163B3BE80078928B /* Name-649.caf in Resources */,
 				42567A77163B3C950078928B /* testSound.wav in Resources */,
+				426A67FA163B427700F52E7B /* Icon.png in Resources */,
+				426A67FD163B429F00F52E7B /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8872,6 +8902,7 @@
 				421B16ED1637786900125D8D /* FliteTTS.m in Sources */,
 				421B16F216377AF500125D8D /* StringUtilities.m in Sources */,
 				421B16F516377BB300125D8D /* ImageUtilities.m in Sources */,
+				426A6800163B450F00F52E7B /* SoundUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

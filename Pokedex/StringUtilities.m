@@ -17,7 +17,11 @@
 }
 
 + (NSString *)numberLabelFromNumber:(NSInteger)number {
-    return [NSString stringWithFormat: @"#%03d", number];
+    return [NSString stringWithFormat: @"#%@", [StringUtilities zeroLeadingNumber: number]];
+}
+
++ (NSString *)zeroLeadingNumber:(NSInteger)number {
+    return [NSString stringWithFormat: @"%03d", number];
 }
 
 
