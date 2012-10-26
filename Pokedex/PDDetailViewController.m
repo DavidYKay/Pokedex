@@ -62,7 +62,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 
-
 }
 
 - (void)viewDidUnload
@@ -83,7 +82,7 @@
 }
 
 - (IBAction)finchWasPressed:(id)sender {
-    [self playPokemonName];
+    [self finchPlayName];
 }
 
 - (IBAction)testSoundWasPressed:(id)sender {
@@ -91,7 +90,7 @@
 }
 
 - (IBAction)avAudioWasPressed:(id)sender {
-    [self avPlaySound];
+    [self sayPokemonName];
 }
 
 - (IBAction)privateApiWasPressed:(id)sender {
@@ -100,7 +99,16 @@
 
 #pragma mark - Sound Playback
 
-- (void)playPokemonName {
+- (void)sayPokemonName {
+    if (_pokemon) {
+        _avSound = [SoundUtilities getNameSoundForNumber: _pokemon.number];
+        [_avSound play];
+    }
+}
+
+#pragma mark - Failed Sound Attempts
+
+- (void)finchPlayName {
     NSLog(@"playPokemonName");
     NSError *error = nil;
     //FISound *soundA = [_soundFactory loadSoundNamed: @"testSound.wav"
@@ -120,12 +128,6 @@
     AudioServicesPlaySystemSound(_soundEffect);
 }
 
-- (void)avPlaySound {
-    _avSound = [SoundUtilities getNameSoundForNumber: 2];
-
-    [_avSound play];
-}
-
 #pragma mark - Private Speech Synthesis
 
 - (void)privateApiHello {
@@ -141,7 +143,6 @@
     [speech startSpeakingString:@"Hello world, how are you"];
 
     //startSpeakingString:@"hello world"];
-
 }
 
 #pragma mark - Speech Synthesis
