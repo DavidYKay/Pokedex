@@ -8,6 +8,10 @@
 
 #import "FliteTTS.h"
 
+#import "FISoundEngine.h"
+#import "FIFactory.h"
+#import "FISound.h"
+
 #import "VSSpeechSynthesizer.h"
 
 #import "PDDetailViewController.h"
@@ -34,6 +38,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 	self.title = NSLocalizedString(@"Detail", @"Detail");
+
+        _soundFactory = [[FIFactory alloc] init];
+        _soundEngine = [_soundFactory buildSoundEngine];
+        [_soundEngine activateAudioSessionWithCategory:AVAudioSessionCategoryPlayback];
+        [_soundEngine openAudioDevice];
+
+        NSURL *soundEffectUrl = [[NSBundle mainBundle] URLForResource:@"testSound" withExtension:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)(soundEffectUrl), &_soundEffect);
     }
     return self;
 }
@@ -46,9 +58,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 
-    NSURL *soundEffectUrl = [[NSBundle mainBundle] URLForResource:@"testSound" withExtension:@"wav"];
 
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)(soundEffectUrl), &_soundEffect);
 }
 
 - (void)viewDidUnload
@@ -68,6 +78,10 @@
     [self sayHello];
 }
 
+- (IBAction)finchWasPressed:(id)sender {
+    [self playPokemonName];
+}
+
 - (IBAction)testSoundWasPressed:(id)sender {
     [self playMySoundLikeRightNowReally];
 }
@@ -78,7 +92,21 @@
 
 #pragma mark - Sound Playback
 
-- (void) playMySoundLikeRightNowReally {
+- (void)playPokemonName {
+    NSLog(@"playPokemonName");
+    NSError *error = nil;
+    //FISound *soundA = [_soundFactory loadSoundNamed: @"Name-001.caf"
+    FISound *soundA = [_soundFactory loadSoundNamed: @"testSound.wav"
+                                              error: &error];
+    if (error) {
+        NSLog(@"ERROR! Could not load sound. Reason: %@", error);
+    } else {
+        //FISound *soundB = [soundFactory loadSoundNamed:@"gun.wav" maxPolyphony:4 error:NULL];
+        [soundA play];
+    }
+}
+
+- (void)playMySoundLikeRightNowReally {
     NSLog(@"playMySoundLikeRightNowReally");
 
     AudioServicesPlaySystemSound(_soundEffect);

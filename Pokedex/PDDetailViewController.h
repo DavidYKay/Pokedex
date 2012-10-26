@@ -11,10 +11,14 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 @class Pokemon;
+@class FIFactory;
+@class FISoundEngine;
 
 @interface PDDetailViewController : UIViewController <UISplitViewControllerDelegate> {
 
      SystemSoundID _soundEffect;
+     FIFactory *_soundFactory;
+     FISoundEngine *_soundEngine;
 
 }
 
@@ -30,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *pokemonImage;
 
 - (IBAction)speakWasPressed:(id)sender;
+- (IBAction)finchWasPressed:(id)sender;
 - (IBAction)privateApiWasPressed:(id)sender;
 - (IBAction)testSoundWasPressed:(id)sender;
 

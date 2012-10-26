@@ -1,0 +1,3 @@
+[submodule "Libraries/Finch"]
+	path = Libraries/Finch
+	url = git://github.com/zoul/Finch.git
