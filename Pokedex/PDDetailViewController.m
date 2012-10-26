@@ -178,6 +178,7 @@
 
 	// Update the view.
 	[self configureView];
+        [self sayPokemonName];
     }
 
     if (self.masterPopoverController != nil) {
