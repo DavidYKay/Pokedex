@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import <AudioToolbox/AudioToolbox.h>
+
 @class Pokemon;
 
-@interface PDDetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface PDDetailViewController : UIViewController <UISplitViewControllerDelegate> {
+
+     SystemSoundID _soundEffect;
+
+}
 
 @property (strong, nonatomic) Pokemon *pokemon;
 
@@ -23,6 +29,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *pokemonImage;
 
-- (IBAction)helloWasPressed:(id)sender;
+- (IBAction)speakWasPressed:(id)sender;
+- (IBAction)privateApiWasPressed:(id)sender;
+- (IBAction)testSoundWasPressed:(id)sender;
 
 @end

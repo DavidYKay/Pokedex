@@ -7,18 +7,21 @@
 //
 
 #import "FliteTTS.h"
-#import "Pokedex.h"
+
+#import "VSSpeechSynthesizer.h"
 
 #import "PDDetailViewController.h"
 
 #import "ImageUtilities.h"
+#import "Pokedex.h"
 #import "Pokemon.h"
 #import "StringUtilities.h"
 
 @interface PDDetailViewController ()
 
-    @property (strong, nonatomic) UIPopoverController *masterPopoverController;
-    - (void)configureView;
+@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
+- (void)configureView;
 
 @end
 
@@ -42,6 +45,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+
+    NSURL *soundEffectUrl = [[NSBundle mainBundle] URLForResource:@"testSound" withExtension:@"wav"];
+
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)(soundEffectUrl), &_soundEffect);
 }
 
 - (void)viewDidUnload
@@ -57,25 +64,62 @@
 
 #pragma mark - UI Callbacks
 
-- (IBAction)helloWasPressed:(id)sender {
+- (IBAction)speakWasPressed:(id)sender {
     [self sayHello];
+}
+
+- (IBAction)testSoundWasPressed:(id)sender {
+    [self playMySoundLikeRightNowReally];
+}
+
+- (IBAction)privateApiWasPressed:(id)sender {
+    [self privateApiHello];
+}
+
+#pragma mark - Sound Playback
+
+- (void) playMySoundLikeRightNowReally {
+    NSLog(@"playMySoundLikeRightNowReally");
+
+    AudioServicesPlaySystemSound(_soundEffect);
+}
+
+#pragma mark - Private Speech Synthesis
+
+- (void)privateApiHello {
+    NSLog(@"privateApiHello");
+
+    //id speechSynthesizer =[NSClassFromString(@"VSSpeechSynthesizer") new];
+    VSSpeechSynthesizer *speech = [[NSClassFromString(@"VSSpeechSynthesizer") alloc] init];
+    //startSpeakingString:@"hello world"]; (@"VSSpeechSynthesizer") new];
+
+    //[speech performSelector: @selector(startSpeakingString:) withObject: @"hello world"];
+
+    [speech setRate:(float) 1.0];
+    [speech startSpeakingString:@"Hello world, how are you"];
+
+    //startSpeakingString:@"hello world"];
+
 }
 
 #pragma mark - Speech Synthesis
 
 - (void)sayHello {
+    NSLog(@"sayHello");
 
     FliteTTS * fliteEngine = [Pokedex sharedInstance].fliteEngine;
-    [fliteEngine setVoice:@"cmu_us_awb"];                 // Switch to a different voice
+    [fliteEngine setVoice: @"cmu_us_rms"];                 // Switch to a different voice
 
-    [fliteEngine speakText:@"How are you gentlemen???"];                 // Make it talk
+    //[fliteEngine speakText:@"How are you gentlemen???"];                 // Make it talk
+
+    [fliteEngine speakText: self.pokemon.biography];                 // Make it talk
 
     // voices
-    // cmu_us_kal
-    // cmu_us_kal16
-    // cmu_us_awb
-    // cmu_us_rms
-    // cmu_us_slt
+    // cmu_us_kal - very robotic. slightly slavic sounding. not quite like zugg.
+    // cmu_us_kal16 - smoother/more human than kal. sounds neurotic/depressed.
+    // cmu_us_awb - vague irish tone. whimsical-sounding.
+    // cmu_us_rms - very neutral voice. reminiscent of the MS Sam voice.
+    // cmu_us_slt - female voice. not bad. slightly awkward.
 
     //[fliteEngine setPitch:100.0 variance:50.0 speed:1.0]; // Change the voice properties
 
@@ -130,6 +174,12 @@
     self.masterPopoverController = nil;
 }
 
+#pragma mark - Cleanup
 
+- (void) dealloc {
+   AudioServicesDisposeSystemSoundID(_soundEffect);
+
+   //[super dealloc];
+}
 
 @end
