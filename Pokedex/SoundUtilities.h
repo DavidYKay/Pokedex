@@ -11,5 +11,6 @@
 @interface SoundUtilities : NSObject
 
 + (AVAudioPlayer *)getNameSoundForNumber:(NSInteger)pokemonNumber;
++ (AVAudioPlayer *)getBioSoundForNumber:(NSInteger)pokemonNumber;
 
 @end

@@ -26,9 +26,9 @@
 
 @interface PDDetailViewController ()
 
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+    @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 
-- (void)configureView;
+    - (void)configureView;
 
 @end
 
@@ -40,7 +40,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-	self.title = NSLocalizedString(@"Detail", @"Detail");
+        self.title = NSLocalizedString(@"Detail", @"Detail");
 
         _soundFactory = [[FIFactory alloc] init];
         _soundEngine = [_soundFactory buildSoundEngine];
@@ -99,10 +99,32 @@
 
 #pragma mark - Sound Playback
 
+- (void)stopSound {
+    if (_nameSound.isPlaying) {
+        [_nameSound stop];
+    }
+    if (_bioSound.isPlaying) {
+        [_bioSound stop];
+    }
+}
+
 - (void)sayPokemonName {
     if (_pokemon) {
-        _avSound = [SoundUtilities getNameSoundForNumber: _pokemon.number];
-        [_avSound play];
+        AVAudioPlayer *newSound = [SoundUtilities getNameSoundForNumber: _pokemon.number];
+        if (![newSound.url isEqual: _nameSound.url]) {
+            _nameSound = newSound;
+            [_nameSound play];
+        }
+    }
+}
+
+- (void)sayPokemonBio {
+    if (_pokemon) {
+        AVAudioPlayer *newSound = [SoundUtilities getBioSoundForNumber: _pokemon.number];
+        if (![newSound.url isEqual: _bioSound.url]) {
+            _bioSound = newSound;
+            [_bioSound play];
+        }
     }
 }
 
@@ -174,15 +196,19 @@
 - (void)setPokemon:(id)newPokemon
 {
     if (_pokemon != newPokemon) {
-	_pokemon = newPokemon;
+        _pokemon = newPokemon;
 
-	// Update the view.
-	[self configureView];
+        [self stopSound];
+
+        // Update the view.
+        [self configureView];
+
         [self sayPokemonName];
+        [self performSelector:@selector(sayPokemonBio) withObject:nil afterDelay: 1.5];
     }
 
     if (self.masterPopoverController != nil) {
-	[self.masterPopoverController dismissPopoverAnimated:YES];
+        [self.masterPopoverController dismissPopoverAnimated:YES];
     }
 }
 
@@ -221,9 +247,9 @@
 #pragma mark - Cleanup
 
 - (void) dealloc {
-   AudioServicesDisposeSystemSoundID(_soundEffect);
+    AudioServicesDisposeSystemSoundID(_soundEffect);
 
-   //[super dealloc];
+    //[super dealloc];
 }
 
 @end

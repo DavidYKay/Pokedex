@@ -14,12 +14,26 @@
 
 @implementation SoundUtilities
 
-+ (AVAudioPlayer *)getNameSoundForNumber:(NSInteger)pokemonNumber {
-    NSURL *soundURL = [SoundUtilities getSoundURLForNumber: pokemonNumber];
++ (AVAudioPlayer *)getBioSoundForNumber:(NSInteger)pokemonNumber {
+    NSURL *soundURL = [SoundUtilities getBioSoundURLForNumber: pokemonNumber];
     return [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
 }
 
-+ (NSURL *)getSoundURLForNumber:(NSInteger)pokemonNumber {
+
++ (AVAudioPlayer *)getNameSoundForNumber:(NSInteger)pokemonNumber {
+    NSURL *soundURL = [SoundUtilities getNameSoundURLForNumber: pokemonNumber];
+    return [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+}
+
++ (NSURL *)getBioSoundURLForNumber:(NSInteger)pokemonNumber {
+    NSString *bioString = [NSString stringWithFormat: @"Bio-%@", [StringUtilities zeroLeadingNumber: pokemonNumber]];
+    NSURL *soundURL = [[NSBundle mainBundle] URLForResource:bioString
+                                              withExtension:@"caf"];
+
+    return soundURL;
+}
+
++ (NSURL *)getNameSoundURLForNumber:(NSInteger)pokemonNumber {
     NSString *nameString = [NSString stringWithFormat: @"Name-%@", [StringUtilities zeroLeadingNumber: pokemonNumber]];
     NSURL *soundURL = [[NSBundle mainBundle] URLForResource:nameString
                                               withExtension:@"caf"];

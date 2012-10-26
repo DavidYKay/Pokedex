@@ -21,7 +21,8 @@
      FIFactory *_soundFactory;
      FISoundEngine *_soundEngine;
 
-     AVAudioPlayer *_avSound;
+     AVAudioPlayer *_nameSound;
+     AVAudioPlayer *_bioSound;
 }
 
 @property (strong, nonatomic) Pokemon *pokemon;
