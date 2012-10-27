@@ -107,14 +107,18 @@
 }
 
 //RootViewController.m
-//- (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    if(_letUserSelectRow) {
-//        return indexPath;
-//    } else {
-//        return nil;
-//    }
-//}
+- (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (theTableView == self.tableView) {
+	return indexPath;
+    } else {
+	if(_letUserSelectRow) {
+	    return indexPath;
+	} else {
+	    return nil;
+	}
+    }
+}
 
 #pragma mark - Accessor / Mutator
 
