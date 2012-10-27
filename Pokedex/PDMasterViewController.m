@@ -30,7 +30,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Master", @"Master");
+        self.title = @"Pokémon";
         self.clearsSelectionOnViewWillAppear = NO;
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
     }
@@ -47,6 +47,10 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+
+    //Add the search bar
+    self.tableView.tableHeaderView = self.searchBar;
+    self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
 
     [self refresh];
 }
@@ -88,6 +92,30 @@
 
     self.monsters = monsters;
 }
+
+#pragma mark - Search
+
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar {
+    _searching = YES;
+    _letUserSelectRow = NO;
+    self.tableView.scrollEnabled = NO;
+
+    //Add the done button.
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+        initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                             target:self action:@selector(doneSearchingWasClicked:)];
+}
+
+//RootViewController.m
+- (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if(_letUserSelectRow) {
+        return indexPath;
+    } else {
+        return nil;
+    }
+}
+
 
 #pragma mark - Table View Datasource
 

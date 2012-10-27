@@ -221,9 +221,9 @@
 
         self.numberLabel.text = [StringUtilities numberLabelFromNumber: self.pokemon.number];
 
-        self.nameLabel.text = self.pokemon.name;
-        self.bioLabel.text = self.pokemon.biography;
-        self.primaryTypeLabel.text = self.pokemon.primaryType;
+        self.nameLabel.text          = self.pokemon.name;
+        self.bioLabel.text           = self.pokemon.biography;
+        self.primaryTypeLabel.text   = self.pokemon.primaryType;
         self.secondaryTypeLabel.text = self.pokemon.secondaryType;
     }
 }

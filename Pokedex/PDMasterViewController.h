@@ -12,9 +12,15 @@
 
 #import <CoreData/CoreData.h>
 
-@interface PDMasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface PDMasterViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+
+    BOOL _searching;
+    BOOL _letUserSelectRow;
+}
 
 @property (strong, nonatomic) PDDetailViewController *detailViewController;
 @property (strong, nonatomic) NSArray *monsters;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

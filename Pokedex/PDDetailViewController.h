@@ -23,6 +23,7 @@
 
      AVAudioPlayer *_nameSound;
      AVAudioPlayer *_bioSound;
+
 }
 
 @property (strong, nonatomic) Pokemon *pokemon;
