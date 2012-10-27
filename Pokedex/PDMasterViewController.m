@@ -116,6 +116,15 @@
     }
 }
 
+#pragma mark - Accessor / Mutator
+
+- (void)setMonsters:(NSArray *)monsters {
+    _monsters = monsters;
+
+    if (monsters.count > 0 && self.detailViewController) {
+	self.detailViewController.pokemon = [monsters objectAtIndex: 0];
+    }
+}
 
 #pragma mark - Table View Datasource
 
