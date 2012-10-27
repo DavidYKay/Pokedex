@@ -16,6 +16,7 @@
 
     BOOL _searching;
     BOOL _letUserSelectRow;
+
 }
 
 @property (strong, nonatomic) PDDetailViewController *detailViewController;

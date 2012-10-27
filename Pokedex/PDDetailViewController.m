@@ -131,6 +131,8 @@
     // Update the user interface for the detail item.
 
     if (self.pokemon) {
+        self.title                   = self.pokemon.name;
+
         self.pokemonImage.image = [ImageUtilities imageForNumber: self.pokemon.number];
 
         self.numberLabel.text = [StringUtilities numberLabelFromNumber: self.pokemon.number];

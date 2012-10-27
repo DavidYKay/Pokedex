@@ -5060,9 +5060,9 @@
 			children = (
 				421B0F591634FE3B00125D8D /* PDMasterViewController.h */,
 				421B0F5A1634FE3B00125D8D /* PDMasterViewController.m */,
+				421B0F5F1634FE3B00125D8D /* PDMasterViewController.xib */,
 				421B0F5C1634FE3B00125D8D /* PDDetailViewController.h */,
 				421B0F5D1634FE3B00125D8D /* PDDetailViewController.m */,
-				421B0F5F1634FE3B00125D8D /* PDMasterViewController.xib */,
 				421B0F621634FE3B00125D8D /* PDDetailViewController.xib */,
 			);
 			name = ViewControllers;

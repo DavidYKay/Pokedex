@@ -42,11 +42,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    // Do any additional setup after loading the view, typically from a nib.
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
+
+    //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    //self.navigationItem.rightBarButtonItem = addButton;
 
     //Add the search bar
     // self.tableView.tableHeaderView = self.searchBar;
@@ -106,7 +107,6 @@
                              target:self action:@selector(doneSearchingWasClicked:)];
 }
 
-//RootViewController.m
 - (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (theTableView == self.tableView) {
