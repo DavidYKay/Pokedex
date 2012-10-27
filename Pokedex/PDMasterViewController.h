@@ -23,5 +23,6 @@
 @property (strong, nonatomic) NSArray *monsters;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIView *tableHeaderBar;
 
 @end
