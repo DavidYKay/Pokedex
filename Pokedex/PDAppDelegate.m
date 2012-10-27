@@ -38,8 +38,11 @@
     self.splitViewController = [[UISplitViewController alloc] init];
     self.splitViewController.delegate = detailViewController;
     self.splitViewController.viewControllers = @[masterNavigationController, detailNavigationController];
+    self.splitViewController.navigationController.navigationBar.tintColor = [UIColor blackColor];
+
     self.window.rootViewController = self.splitViewController;
     [self.window makeKeyAndVisible];
+
     return YES;
 }
 

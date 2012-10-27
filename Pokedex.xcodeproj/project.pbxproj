@@ -779,8 +779,6 @@
 		421B16ED1637786900125D8D /* FliteTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B16EC1637786900125D8D /* FliteTTS.m */; };
 		421B16F216377AF500125D8D /* StringUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B16F116377AF500125D8D /* StringUtilities.m */; };
 		421B16F516377BB300125D8D /* ImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B16F416377BB300125D8D /* ImageUtilities.m */; };
-		425665BF163A66690078928B /* VoiceServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 425665BE163A66690078928B /* VoiceServices.framework */; };
-		42567045163B16C70078928B /* libFinch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42567044163B16C70078928B /* libFinch.a */; };
 		4256704A163B202B0078928B /* FISoundEngine.h in Resources */ = {isa = PBXBuildFile; fileRef = 42567047163B202B0078928B /* FISoundEngine.h */; };
 		4256704B163B202B0078928B /* FISound.h in Resources */ = {isa = PBXBuildFile; fileRef = 42567048163B202B0078928B /* FISound.h */; };
 		4256704C163B202B0078928B /* FIFactory.h in Resources */ = {isa = PBXBuildFile; fileRef = 42567049163B202B0078928B /* FIFactory.h */; };
@@ -4269,11 +4267,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				42567050163B20C80078928B /* OpenAL.framework in Frameworks */,
-				42567045163B16C70078928B /* libFinch.a in Frameworks */,
 				420A4548163A5D5500E1E581 /* AudioToolbox.framework in Frameworks */,
 				421B16EA163776C400125D8D /* AVFoundation.framework in Frameworks */,
 				421B0F431634FE3B00125D8D /* UIKit.framework in Frameworks */,
-				425665BF163A66690078928B /* VoiceServices.framework in Frameworks */,
 				421B0F451634FE3B00125D8D /* Foundation.framework in Frameworks */,
 				421B0F471634FE3B00125D8D /* CoreGraphics.framework in Frameworks */,
 				421B0F491634FE3B00125D8D /* CoreData.framework in Frameworks */,

@@ -49,8 +49,8 @@
     self.navigationItem.rightBarButtonItem = addButton;
 
     //Add the search bar
-    self.tableView.tableHeaderView = self.searchBar;
-    self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    // self.tableView.tableHeaderView = self.searchBar;
+    // self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
 
     [self refresh];
 }

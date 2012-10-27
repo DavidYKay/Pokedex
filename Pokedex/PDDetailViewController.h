@@ -9,17 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-#import <AudioToolbox/AudioToolbox.h>
-
 @class Pokemon;
-@class FIFactory;
-@class FISoundEngine;
 
 @interface PDDetailViewController : UIViewController <UISplitViewControllerDelegate> {
-
-     SystemSoundID _soundEffect;
-     FIFactory *_soundFactory;
-     FISoundEngine *_soundEngine;
 
      AVAudioPlayer *_nameSound;
      AVAudioPlayer *_bioSound;
@@ -36,11 +28,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *secondaryTypeLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *pokemonImage;
-
-- (IBAction)speakWasPressed:(id)sender;
-- (IBAction)finchWasPressed:(id)sender;
-- (IBAction)privateApiWasPressed:(id)sender;
-- (IBAction)avAudioWasPressed:(id)sender;
-- (IBAction)testSoundWasPressed:(id)sender;
 
 @end
