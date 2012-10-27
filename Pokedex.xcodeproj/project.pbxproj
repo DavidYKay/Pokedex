@@ -2082,9 +2082,10 @@
 		42567A74163B3BE80078928B /* Name-648.caf in Resources */ = {isa = PBXBuildFile; fileRef = 42567563163B3BE10078928B /* Name-648.caf */; };
 		42567A75163B3BE80078928B /* Name-649.caf in Resources */ = {isa = PBXBuildFile; fileRef = 42567564163B3BE10078928B /* Name-649.caf */; };
 		42567A77163B3C950078928B /* testSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 42567A76163B3C950078928B /* testSound.wav */; };
-		426A67FA163B427700F52E7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 426A67F9163B427700F52E7B /* Icon.png */; };
 		426A67FD163B429F00F52E7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 426A67FC163B429F00F52E7B /* Icon.png */; };
 		426A6800163B450F00F52E7B /* SoundUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A67FF163B450F00F52E7B /* SoundUtilities.m */; };
+		426A681B163CA10D00F52E7B /* PokemonTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A681A163CA10D00F52E7B /* PokemonTableCell.m */; };
+		426A681D163CA12000F52E7B /* PokemonTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426A681C163CA12000F52E7B /* PokemonTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -4258,6 +4259,9 @@
 		426A67FC163B429F00F52E7B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		426A67FE163B450F00F52E7B /* SoundUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundUtilities.h; sourceTree = "<group>"; };
 		426A67FF163B450F00F52E7B /* SoundUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundUtilities.m; sourceTree = "<group>"; };
+		426A6819163CA10D00F52E7B /* PokemonTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokemonTableCell.h; sourceTree = "<group>"; };
+		426A681A163CA10D00F52E7B /* PokemonTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokemonTableCell.m; sourceTree = "<group>"; };
+		426A681C163CA12000F52E7B /* PokemonTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PokemonTableCell.xib; sourceTree = "<group>"; };
 		A01B485CA75140928EC39B31 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -4344,6 +4348,7 @@
 		421B0F4A1634FE3B00125D8D /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				426A6818163CA0F400F52E7B /* Table Cells */,
 				421B16EF16377AE700125D8D /* Utilities */,
 				421B14A21637649000125D8D /* Model */,
 				421B14A01637648C00125D8D /* ViewControllers */,
@@ -6714,6 +6719,16 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		426A6818163CA0F400F52E7B /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				426A6819163CA10D00F52E7B /* PokemonTableCell.h */,
+				426A681A163CA10D00F52E7B /* PokemonTableCell.m */,
+				426A681C163CA12000F52E7B /* PokemonTableCell.xib */,
+			);
+			name = "Table Cells";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -8743,8 +8758,8 @@
 				42567A74163B3BE80078928B /* Name-648.caf in Resources */,
 				42567A75163B3BE80078928B /* Name-649.caf in Resources */,
 				42567A77163B3C950078928B /* testSound.wav in Resources */,
-				426A67FA163B427700F52E7B /* Icon.png in Resources */,
 				426A67FD163B429F00F52E7B /* Icon.png in Resources */,
+				426A681D163CA12000F52E7B /* PokemonTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8899,6 +8914,7 @@
 				421B16F216377AF500125D8D /* StringUtilities.m in Sources */,
 				421B16F516377BB300125D8D /* ImageUtilities.m in Sources */,
 				426A6800163B450F00F52E7B /* SoundUtilities.m in Sources */,
+				426A681B163CA10D00F52E7B /* PokemonTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,8 @@
 #import "StringUtilities.h"
 #import "ImageUtilities.h"
 
+#import "PokemonTableCell.h"
+
 @interface PDMasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -42,6 +44,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.tableView.rowHeight = 72;
 
     //self.navigationController.navigationBarHidden = YES;
 
@@ -144,22 +148,29 @@
 {
     static NSString *CellIdentifier = @"Cell";
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    PokemonTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        //NSArray *views = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"PokemonTableCell" owner:self options:nil];
+        cell = [views objectAtIndex: 0];
     }
 
+
     [self configureCell:cell atIndexPath:indexPath];
+
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(PokemonTableCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Pokemon *pokemon = [self.monsters objectAtIndex: indexPath.row];
 
-    cell.textLabel.text = pokemon.name;
-    cell.detailTextLabel.text = [StringUtilities numberLabelFromNumber: pokemon.number];
-    cell.imageView.image = [ImageUtilities imageForNumber: pokemon.number];
+    cell.nameLabel.text         = pokemon.name;
+    cell.numberLabel.text       = [StringUtilities numberLabelFromNumber: pokemon.number];
+    cell.pokemonImageView.image = [ImageUtilities imageForNumber: pokemon.number];
+
 }
 
 #pragma mark - Table View Delegate
