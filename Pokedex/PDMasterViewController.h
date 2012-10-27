@@ -12,7 +12,7 @@
 
 #import <CoreData/CoreData.h>
 
-@interface PDMasterViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+@interface PDMasterViewController : UITableViewController {
 
     BOOL _searching;
     BOOL _letUserSelectRow;

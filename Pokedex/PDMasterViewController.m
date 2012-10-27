@@ -98,7 +98,7 @@
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar {
     _searching = YES;
     _letUserSelectRow = NO;
-    self.tableView.scrollEnabled = NO;
+    //self.tableView.scrollEnabled = NO;
 
     //Add the done button.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
@@ -107,14 +107,14 @@
 }
 
 //RootViewController.m
-- (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    if(_letUserSelectRow) {
-        return indexPath;
-    } else {
-        return nil;
-    }
-}
+//- (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    if(_letUserSelectRow) {
+//        return indexPath;
+//    } else {
+//        return nil;
+//    }
+//}
 
 #pragma mark - Accessor / Mutator
 
@@ -166,6 +166,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"didSelectRowAtIndexPath: %d", indexPath.row);
 
     // self.detailViewController.detailItem = object;
 

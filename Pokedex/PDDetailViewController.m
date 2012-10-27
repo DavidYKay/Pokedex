@@ -32,8 +32,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Detail", @"Detail");     
-     
+        self.title = NSLocalizedString(@"Detail", @"Detail");
+
     }
     return self;
 }
@@ -78,9 +78,11 @@
 }
 
 - (void)sayPokemonName {
+    NSLog(@"sayPokemonName");
     if (_pokemon) {
         AVAudioPlayer *newSound = [SoundUtilities getNameSoundForNumber: _pokemon.number];
         if (![newSound.url isEqual: _nameSound.url]) {
+            NSLog(@"saying pokemon name");
             _nameSound = newSound;
             [_nameSound play];
         }
@@ -88,29 +90,26 @@
 }
 
 - (void)sayPokemonBio {
+    NSLog(@"sayPokemonBio");
     if (_pokemon) {
         AVAudioPlayer *newSound = [SoundUtilities getBioSoundForNumber: _pokemon.number];
         if (![newSound.url isEqual: _bioSound.url]) {
+            NSLog(@"saying pokemon bio");
             _bioSound = newSound;
             [_bioSound play];
         }
     }
 }
 
-#pragma mark - Failed Sound Attempts
-
-- (void)playMySoundLikeRightNowReally {
-    NSLog(@"playMySoundLikeRightNowReally");
-
-}
-
-#pragma mark - Speech Synthesis
-
 #pragma mark - Managing the detail item
 
 - (void)setPokemon:(id)newPokemon
 {
+    NSLog(@"setPokemon: %@", newPokemon);
+
     if (_pokemon != newPokemon) {
+        NSLog(@"setting new pokemon");
+
         _pokemon = newPokemon;
 
         [self stopSound];
