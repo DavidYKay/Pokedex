@@ -19,7 +19,7 @@
 #import "PokemonTableCell.h"
 
 @interface PDMasterViewController ()
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (void)configureCell:(UITableViewCell *)cell inTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation PDMasterViewController
@@ -46,6 +46,7 @@
     [super viewDidLoad];
 
     self.tableView.rowHeight = 72;
+    self.searchController.searchResultsTableView.rowHeight = 72;
 
     //self.navigationController.navigationBarHidden = YES;
 
@@ -143,9 +144,11 @@
     self.monsters = monsters;
 }
 
-#pragma mark - Search
+#pragma mark - Search Bar
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar {
+    NSLog(@"searchBarTextDidBeginEditing");
+
     _searching = YES;
     _letUserSelectRow = NO;
     //self.tableView.scrollEnabled = NO;
@@ -156,18 +159,56 @@
                              target:self action:@selector(doneSearchingWasClicked:)];
 }
 
-- (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma mark - Search Display
 
-    if (theTableView == self.tableView) {
-	return indexPath;
-    } else {
-	if(_letUserSelectRow) {
-	    return indexPath;
-	} else {
-	    return nil;
-	}
-    }
+- (void)filterContentForSearchText:(NSString *)searchText
+                             scope:(NSString *)scope
+{
+    NSLog(@"filterContentForSearchText: %@", searchText);
+
+    NSPredicate *resultPredicate = [NSPredicate
+	predicateWithFormat:@"name contains[cd] %@", searchText];
+	//predicateWithFormat:@"SELF.name contains[cd] %@", searchText];
+    //publisher == %@", @"Apress" ];
+
+    self.searchResults = [self.monsters filteredArrayUsingPredicate: resultPredicate];
 }
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+    shouldReloadTableForSearchString:(NSString *)searchString
+{
+    NSLog(@"filterContentForSearchText: %@", searchString);
+
+    [self filterContentForSearchText: searchString
+                               scope: [[self.searchController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchController.searchBar
+                                                     selectedScopeButtonIndex]]];
+
+    return YES;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+    [self filterContentForSearchText: [self.searchController.searchBar text]
+                               scope: [[self.searchController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+
+    return YES;
+}
+
+
+//- (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    //if (theTableView == self.tableView) {
+	//return indexPath;
+    //} else {
+	//if(_letUserSelectRow) {
+	    //return indexPath;
+	//} else {
+	    //return nil;
+	//}
+    //}
+//}
 
 #pragma mark - Accessor / Mutator
 
@@ -191,7 +232,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.monsters.count;
+    if (tableView == self.tableView) {
+        return self.monsters.count;
+    } else if (tableView == self.searchController.searchResultsTableView) {
+        return self.searchResults.count;
+    } else {
+        return 0;
+    }
 }
 
 // Customize the appearance of table view cells.
@@ -199,24 +246,23 @@
 {
     static NSString *CellIdentifier = @"Cell";
 
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     PokemonTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (cell == nil) {
-        //NSArray *views = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"PokemonTableCell" owner:self options:nil];
         cell = [views objectAtIndex: 0];
     }
 
-
-    [self configureCell:cell atIndexPath:indexPath];
+    [self configureCell: cell
+	    inTableView: tableView
+	    atIndexPath: indexPath];
 
     return cell;
 }
 
-- (void)configureCell:(PokemonTableCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(PokemonTableCell *)cell inTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath
 {
-    Pokemon *pokemon = [self.monsters objectAtIndex: indexPath.row];
+    Pokemon *pokemon = [self getPokemonFromTable: tableView atIndexPath: indexPath];
 
     cell.nameLabel.text         = pokemon.name;
     cell.numberLabel.text       = [StringUtilities numberLabelFromNumber: pokemon.number];
@@ -230,11 +276,23 @@
 {
     NSLog(@"didSelectRowAtIndexPath: %d", indexPath.row);
 
-    // self.detailViewController.detailItem = object;
-
-    Pokemon *pokemon = [self.monsters objectAtIndex: indexPath.row];
+    Pokemon *pokemon = [self getPokemonFromTable: tableView atIndexPath: indexPath];
 
     self.detailViewController.pokemon = pokemon;
+}
+
+#pragma mark - Utility
+
+- (Pokemon *)getPokemonFromTable:(UITableView *)tableView
+		     atIndexPath:(NSIndexPath *)indexPath
+{
+    Pokemon *pokemon = nil;
+    if (tableView == self.tableView) {
+	pokemon = [self.monsters objectAtIndex: indexPath.row];
+    } else if (tableView == self.searchController.searchResultsTableView) {
+	pokemon = [self.searchResults objectAtIndex: indexPath.row];
+    }
+    return pokemon;
 }
 
 @end

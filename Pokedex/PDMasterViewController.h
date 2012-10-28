@@ -17,7 +17,7 @@ typedef enum {
     PDPokemonSortModeName   = 1,
 } PDPokemonSortMode;
 
-@interface PDMasterViewController : UITableViewController {
+@interface PDMasterViewController : UITableViewController <UISearchDisplayDelegate> {
 
     BOOL _searching;
     BOOL _letUserSelectRow;
@@ -27,10 +27,12 @@ typedef enum {
 
 @property (strong, nonatomic) PDDetailViewController *detailViewController;
 @property (strong, nonatomic) NSArray *monsters;
+@property (strong, nonatomic) NSArray *searchResults;
 
 @property PDPokemonSortMode pokemonSortMode;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UISearchDisplayController *searchController;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *pokemonSortModeControl;
 @property (weak, nonatomic) IBOutlet UIView *tableHeaderBar;
 

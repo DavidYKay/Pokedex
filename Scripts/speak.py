@@ -8,7 +8,7 @@ import sys
 
 if __name__ == '__main__':
     # load the json into memory
-    MONSTERS = json.load(open('scraper/pokemons.json'))
+    MONSTERS = json.load(open('scraper/pokemon.json'))
 
     # loop through all the items
     for pokemon in MONSTERS:
