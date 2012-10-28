@@ -27,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *primaryTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondaryTypeLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *primaryAbilityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondaryAbilityLabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *pokemonImage;
 
 @end

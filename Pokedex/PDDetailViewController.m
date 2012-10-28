@@ -146,6 +146,9 @@
         self.bioLabel.text           = self.pokemon.biography;
         self.primaryTypeLabel.text   = self.pokemon.primaryType;
         self.secondaryTypeLabel.text = self.pokemon.secondaryType;
+
+	self.primaryAbilityLabel.text   = self.pokemon.primaryAbility;
+        self.secondaryAbilityLabel.text = self.pokemon.secondaryAbility;
     }
 }
 

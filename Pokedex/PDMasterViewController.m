@@ -120,18 +120,22 @@
 
     NSMutableArray *monsters = [NSMutableArray array];
     while ([results next]) {
-        NSInteger number        = [results intForColumn:@"number"];
-        NSString *name          = [results stringForColumn:@"name"];
-        NSString *primaryType   = [results stringForColumn:@"primary_type"];
-        NSString *secondaryType = [results stringForColumn:@"secondary_type"];
-        NSString *biography     = [results stringForColumn:@"biography"];
+        NSInteger number           = [results intForColumn:@"number"];
+        NSString *name             = [results stringForColumn:@"name"];
+        NSString *primaryType      = [results stringForColumn:@"primary_type"];
+        NSString *secondaryType    = [results stringForColumn:@"secondary_type"];
+        NSString *biography        = [results stringForColumn:@"biography"];
+        NSString *primaryAbility   = [results stringForColumn:@"primary_ability"];
+        NSString *secondaryAbility = [results stringForColumn:@"secondary_ability"];
 
         Pokemon *pokemon = [[Pokemon alloc] init];
-        pokemon.number        = number;
-        pokemon.name          = name;
-        pokemon.primaryType   = primaryType;
-        pokemon.secondaryType = secondaryType;
-        pokemon.biography     = biography;
+        pokemon.number           = number;
+        pokemon.name             = name;
+        pokemon.primaryType      = primaryType;
+        pokemon.secondaryType    = secondaryType;
+        pokemon.biography        = biography;
+        pokemon.primaryAbility   = primaryAbility;
+        pokemon.secondaryAbility = secondaryAbility;
 
         [monsters addObject: pokemon];
     }
