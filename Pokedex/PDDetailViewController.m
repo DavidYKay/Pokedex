@@ -56,7 +56,12 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    if (interfaceOrientation == UIInterfaceOrientationPortrait ||
+	interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown
+    ) {
+	return YES;
+    }
+    return NO;
 }
 
 #pragma mark - UI Callbacks
