@@ -42,9 +42,9 @@ class PokemonSpider(CrawlSpider):
       item['primary_type']   = monster.select('td[5]/a/span/text()').extract()
       item['secondary_type'] = monster.select('td[6]/a/span/text()').extract()
       items.append(item)
-      
+
     return items
-  
+
   def parse_traverse(self, response):
     hxs = HtmlXPathSelector(response)
 
@@ -59,15 +59,17 @@ class PokemonSpider(CrawlSpider):
       items += Request(url=detail_page_link,
              callback=self.parse_detail_page)
     return items
-  
+
   def parse_detail_page(self, response):
     self.log('Hi, this is a Pokemon detail page! %s' % response.url)
 
     hxs = HtmlXPathSelector(response)
-    
+
     item = PokemonListing()
-    # will this work?
-    bio = hxs.select("id('mw-content-text')/p[4]").extract()[0]
+    # captures 50% of pokemon
+    #bio = hxs.select("id('mw-content-text')/p[4]").extract()[0]
+    # captures 100% of pokemon
+    bio = hxs.select("id('mw-content-text')/p[preceding-sibling::h3][1]").extract()[0]
     item['biography'] = w3lib.html.replace_tags(bio)
     #$x("id('mw-content-text')/p[4]/text()") # without HTML values
 
