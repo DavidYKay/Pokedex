@@ -163,9 +163,10 @@
 #pragma mark - Accessor / Mutator
 
 - (void)setMonsters:(NSArray *)monsters {
+    NSArray *oldMonsters = _monsters;
     _monsters = monsters;
 
-    if (monsters.count > 0 && self.detailViewController) {
+    if (monsters.count > 0 && self.detailViewController && oldMonsters.count == 0) {
 	self.detailViewController.pokemon = [monsters objectAtIndex: 0];
     }
     [self.tableView reloadData];
