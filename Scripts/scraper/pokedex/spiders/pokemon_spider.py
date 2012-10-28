@@ -84,4 +84,7 @@ class PokemonSpider(CrawlSpider):
     item['primary_type'] = table.select("tr[3]/td/table/tr/td/table/tr/td/table/tr[1]/td[1]/a/span/b[1]/text()").extract()[0]
     item['secondary_type'] = table.select("tr[3]/td/table/tr/td/table/tr/td/table/tr[1]/td[2]/a/span/b[1]/text()").extract()[0]
 
+    item['primary_ability'] = table.select("tr[4]/td/table/tr/td/table/tr/td[1]/a/span/text()").extract()[0]
+    item['secondary_ability'] = table.select("tr[4]/td/table/tr/td/table/tr/td[4]/a/span/text()").extract()[0]
+
     return item
