@@ -15,5 +15,7 @@
 @property (strong, nonatomic) NSString *primaryType;
 @property (strong, nonatomic) NSString *secondaryType;
 @property (strong, nonatomic) NSString *biography;
+@property (strong, nonatomic) NSString *primaryAbility;
+@property (strong, nonatomic) NSString *secondaryAbility;
 
 @end
