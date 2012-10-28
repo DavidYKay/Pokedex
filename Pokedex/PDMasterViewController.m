@@ -53,7 +53,9 @@
     self.tableView.tableHeaderView = self.tableHeaderBar;
     self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
 
+    //[self refresh: PDPokemonSortModeNumber];
     [self refresh];
+
 }
 
 - (void)viewDidUnload
@@ -74,22 +76,42 @@
     if (sender == self.pokemonSortModeControl) {
 	UISegmentedControl *toggle = (UISegmentedControl *)sender;
 
-	if(toggle.selectedSegmentIndex == 0) {
+	if (toggle.selectedSegmentIndex == 0) {
 	    NSLog(@"NUMBER mode selected");
-	}
-	if(toggle.selectedSegmentIndex == 1) {
+
+	    self.pokemonSortMode = PDPokemonSortModeNumber;
+	    [self refresh];
+	} else if (toggle.selectedSegmentIndex == 1) {
 	    NSLog(@"NAME mode selected");
+
+	    self.pokemonSortMode = PDPokemonSortModeName;
+	    [self refresh];
 	}
-
     }
-
 }
 
 #pragma mark - Data Management
 
 - (void)refresh {
+    [self refresh: self.pokemonSortMode];
+}
+
+- (void)refresh:(PDPokemonSortMode)mode {
+    NSString *selectString = @"* from pokemon";
+
+    NSString *sortString;
+    if (mode == PDPokemonSortModeNumber) {
+	sortString = @"number ASC";
+    } else if (mode == PDPokemonSortModeName) {
+	sortString = @"name ASC";
+    } else {
+	sortString = @"number ASC";
+    }
+
+    NSString *queryString = [NSString stringWithFormat: @"SELECT %@ ORDER BY %@", selectString, sortString];
+
     FMDatabase *database = [Pokedex sharedInstance].database;
-    FMResultSet *results = [database executeQuery: @"SELECT * from pokemon"];
+    FMResultSet *results = [database executeQuery: queryString];
 
     NSMutableArray *monsters = [NSMutableArray array];
     while ([results next]) {
@@ -146,6 +168,7 @@
     if (monsters.count > 0 && self.detailViewController) {
 	self.detailViewController.pokemon = [monsters objectAtIndex: 0];
     }
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table View Datasource
