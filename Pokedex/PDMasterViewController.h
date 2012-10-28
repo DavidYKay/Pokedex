@@ -23,6 +23,9 @@
 @property (strong, nonatomic) NSArray *monsters;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *pokemonSortModeControl;
 @property (weak, nonatomic) IBOutlet UIView *tableHeaderBar;
+
+- (IBAction)pokemonModeWasToggled:(id)sender;
 
 @end

@@ -67,6 +67,24 @@
     return YES;
 }
 
+#pragma mark - UI Callbacks
+
+- (IBAction)pokemonModeWasToggled:(id)sender {
+
+    if (sender == self.pokemonSortModeControl) {
+	UISegmentedControl *toggle = (UISegmentedControl *)sender;
+
+	if(toggle.selectedSegmentIndex == 0) {
+	    NSLog(@"NUMBER mode selected");
+	}
+	if(toggle.selectedSegmentIndex == 1) {
+	    NSLog(@"NAME mode selected");
+	}
+
+    }
+
+}
+
 #pragma mark - Data Management
 
 - (void)refresh {

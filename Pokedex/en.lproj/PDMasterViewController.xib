@@ -79,18 +79,18 @@
 				<float key="IBUISectionHeaderHeight">22</float>
 				<float key="IBUISectionFooterHeight">22</float>
 			</object>
-			<object class="IBUISearchDisplayController" id="279763103">
+			<object class="IBUISearchDisplayController" id="657461831">
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
-			<object class="IBUIView" id="457248263">
+			<object class="IBUIView" id="189517991">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">294</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUISearchBar" id="260807572">
-						<reference key="NSNextResponder" ref="457248263"/>
+					<object class="IBUISearchBar" id="430881163">
+						<reference key="NSNextResponder" ref="189517991"/>
 						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, 29}, {373, 44}}</string>
-						<reference key="NSSuperview" ref="457248263"/>
+						<reference key="NSSuperview" ref="189517991"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -100,13 +100,13 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 					</object>
-					<object class="IBUISegmentedControl" id="697828137">
-						<reference key="NSNextResponder" ref="457248263"/>
+					<object class="IBUISegmentedControl" id="166210282">
+						<reference key="NSNextResponder" ref="189517991"/>
 						<int key="NSvFlags">294</int>
 						<string key="NSFrameSize">{373, 30}</string>
-						<reference key="NSSuperview" ref="457248263"/>
+						<reference key="NSSuperview" ref="189517991"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="260807572"/>
+						<reference key="NSNextKeyView" ref="430881163"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -138,7 +138,7 @@
 				<string key="NSFrameSize">{373, 73}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="697828137"/>
+				<reference key="NSNextKeyView" ref="166210282"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -164,7 +164,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchDisplayController</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="279763103"/>
+						<reference key="destination" ref="657461831"/>
 					</object>
 					<int key="connectionID">10</int>
 				</object>
@@ -172,9 +172,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">tableHeaderBar</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="457248263"/>
+						<reference key="destination" ref="189517991"/>
 					</object>
 					<int key="connectionID">17</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pokemonSortModeControl</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="166210282"/>
+					</object>
+					<int key="connectionID">19</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -193,9 +201,18 @@
 					<int key="connectionID">5</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">pokemonModeWasToggled:</string>
+						<reference key="source" ref="166210282"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">18</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="260807572"/>
+						<reference key="source" ref="430881163"/>
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">15</int>
@@ -203,7 +220,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchContentsController</string>
-						<reference key="source" ref="279763103"/>
+						<reference key="source" ref="657461831"/>
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">11</int>
@@ -211,7 +228,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchResultsDataSource</string>
-						<reference key="source" ref="279763103"/>
+						<reference key="source" ref="657461831"/>
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">12</int>
@@ -219,7 +236,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchResultsDelegate</string>
-						<reference key="source" ref="279763103"/>
+						<reference key="source" ref="657461831"/>
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">13</int>
@@ -227,7 +244,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="279763103"/>
+						<reference key="source" ref="657461831"/>
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">14</int>
@@ -235,8 +252,8 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchBar</string>
-						<reference key="source" ref="279763103"/>
-						<reference key="destination" ref="260807572"/>
+						<reference key="source" ref="657461831"/>
+						<reference key="destination" ref="430881163"/>
 					</object>
 					<int key="connectionID">9</int>
 				</object>
@@ -267,27 +284,27 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="279763103"/>
+						<reference key="object" ref="657461831"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">16</int>
-						<reference key="object" ref="457248263"/>
+						<reference key="object" ref="189517991"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="260807572"/>
-							<reference ref="697828137"/>
+							<reference ref="430881163"/>
+							<reference ref="166210282"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
-						<reference key="object" ref="697828137"/>
-						<reference key="parent" ref="457248263"/>
+						<reference key="object" ref="166210282"/>
+						<reference key="parent" ref="189517991"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
-						<reference key="object" ref="260807572"/>
-						<reference key="parent" ref="457248263"/>
+						<reference key="object" ref="430881163"/>
+						<reference key="parent" ref="189517991"/>
 					</object>
 				</array>
 			</object>
@@ -307,18 +324,34 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">17</int>
+			<int key="maxID">19</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">PDMasterViewController</string>
 					<string key="superclassName">UITableViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">pokemonModeWasToggled:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">pokemonModeWasToggled:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">pokemonModeWasToggled:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="pokemonSortModeControl">UISegmentedControl</string>
 						<string key="searchBar">UISearchBar</string>
 						<string key="tableHeaderBar">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="pokemonSortModeControl">
+							<string key="name">pokemonSortModeControl</string>
+							<string key="candidateClassName">UISegmentedControl</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="searchBar">
 							<string key="name">searchBar</string>
 							<string key="candidateClassName">UISearchBar</string>
